@@ -1,0 +1,86 @@
+﻿<Page x:Class="TafeSystemUI.View.TeacherViewFol.TeacherCourse"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TafeSystemUI.View.TeacherViewFol"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="TeacherCourse">
+
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="Foreground" Value="#12232E"/>
+        </Style>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="AliceBlue"/>
+        </Style>
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="AliceBlue"/>
+        </Style>
+        <Style TargetType="Page">
+            <Setter Property="Background" Value="AliceBlue"/>
+        </Style>
+        <Style TargetType="DataGridCellsPanel">
+            <Setter Property="Background" Value="AliceBlue"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="AliceBlue"/>
+        </Style>
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background" Value="AliceBlue"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="113*"/>
+            <ColumnDefinition Width="147*"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="300" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ComboBox x:Name = "TeacherSemester" HorizontalAlignment = "Left" 
+         VerticalAlignment = "Top" Grid.Column="5" Grid.Row="1" Width = "120" Height="30" 
+         SelectionChanged = "TeacherSemester_SelectionChanged">
+        </ComboBox>
+        <Button x:Name="AllCourses" Grid.Row="1" Grid.Column="2" Content="All courses taught"   Click="AllCourses_Click"/>
+        <Button x:Name="Search" Grid.Row="1" Grid.Column="3" Content="Search locations and courses taught by semester>" FontSize="13"  Click="Search_Click" Grid.ColumnSpan="2" Margin="0,0,10,0"/>
+        <Button x:Name="BackBtn" Grid.Row="1" Grid.Column="1" Content="Back"   Click="BackBtn_Click"/>
+        <DataGrid x:Name="dgCourses"  
+                  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="6" AutoGenerateColumns="False"
+                  
+                  IsReadOnly="True">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="ID" Binding="{Binding CourseId1}"  />
+                <DataGridTextColumn Header="Course Name" Binding="{Binding Name1}" />
+                <DataGridTextColumn Header="Description" Binding="{Binding Desc1}" />
+                <DataGridTextColumn Header="hoursPerWeek" Binding="{Binding HoursPerWeek1}" />
+                <DataGridTextColumn Header="Cost" Binding="{Binding Cost1 ,StringFormat='c'}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid x:Name="dgColleges" 
+                  Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="6" AutoGenerateColumns="False"
+                  
+                  IsReadOnly="True">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="College ID" Binding="{Binding CollegeId1}"  />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name1}" />
+                <DataGridTextColumn Header="Location" Binding="{Binding CollegeLocation1}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Page>

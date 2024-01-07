@@ -1,0 +1,150 @@
+﻿<Page x:Class="TafeSystemUI.View.TeacherView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TafeSystemUI.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="TeacherView">
+
+
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="Foreground" Value="#12232E"/>
+        </Style>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="AliceBlue"/>
+        </Style>
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="AliceBlue"/>
+        </Style>
+        <Style TargetType="Page">
+            <Setter Property="Background" Value="AliceBlue"/>
+        </Style>
+        <Style TargetType="DataGridCellsPanel">
+            <Setter Property="Background" Value="AliceBlue"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="AliceBlue"/>
+        </Style>
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background" Value="AliceBlue"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="200" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Button x:Name="BackBtn" Grid.Row="1" Grid.Column="1" Content="Back"   Click="BackBtn_Click"/>
+        <Button x:Name="AddTeacher" Grid.Row="1" Grid.Column="2" Content="Add Teacher"   Click="AddTeacher_Click"/>
+        <Button x:Name="Search" Grid.Row="3" Grid.Column="6" Content="Search"   Click="Search_Click"/>
+        <Button x:Name="OtherThanBaseLoc" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Click="OtherThanBaseLoc_Click">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap">full-time teachers currently teaching in locations other than their based location</TextBlock>
+        </Button>
+        <Label Height="30" FontSize="11" Content="Search by teaching location>" Grid.Row="1" Grid.Column="3" />
+        <Label Height="30" FontSize="11" Content="Search by semester>" Grid.Row="1" Grid.Column="5" />
+        <Label Height="30" FontSize="11" Content="Search by Employment>" Grid.Row="3" Grid.Column="3" />
+        <ComboBox x:Name = "Semester" HorizontalAlignment = "Left" 
+         VerticalAlignment = "Top" Grid.Column="6" Grid.Row="1" Width = "120" Height="30" 
+         SelectionChanged = "Semester_SelectionChanged">
+        </ComboBox>
+
+
+        <ComboBox x:Name = "EmploymentStatus" HorizontalAlignment = "Left" 
+         VerticalAlignment = "Top" Grid.Column="4" Grid.Row="3" Width = "120" Height="30" 
+         SelectionChanged = "EmploymentStatus_SelectionChanged">
+            <ComboBoxItem Content = "full-time" />
+            <ComboBoxItem Content = "part-time" />
+
+        </ComboBox>
+
+        <ComboBox x:Name = "Location" HorizontalAlignment = "Left" 
+         VerticalAlignment = "Top" Grid.Column="4" Grid.Row="1" Width = "120" Height="30" 
+         SelectionChanged = "Location_SelectionChanged">
+        </ComboBox>
+        <DataGrid x:Name="dgTeachers"  
+                  Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="6" Grid.RowSpan="4" AutoGenerateColumns="False"
+                  
+                  IsReadOnly="True">
+            <DataGrid.Columns >
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="Details" Click="Details_Click" Width="50">Details</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="Button_Click_1" Width="50">Update</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="DeleteTeacher" Click="DeleteTeacher_Click" Width="50">Delete</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="ID" Binding="{Binding TeacherId1}"  />
+                <DataGridTextColumn Header="FirstName" Binding="{Binding FirstName1}" />
+                <DataGridTextColumn Header="LastName" Binding="{Binding LastName1}" />
+                <DataGridTextColumn Header="DOB" Binding="{Binding DOB1, StringFormat=dd/MM/yyyy}" />
+                <DataGridTextColumn Header="Address" Binding="{Binding StreetAddress1}" />
+                <DataGridTextColumn Header="Suburb" Binding="{Binding Suburb1}"  />
+                <DataGridTextColumn Header="State" Binding="{Binding State1}"  />
+                <DataGridTextColumn Header="PostCode" Binding="{Binding PostCode1}"  />
+                <DataGridTextColumn Header="Mobile" Binding="{Binding Mobile1}"  />
+                <DataGridTextColumn Header="Gender" Binding="{Binding Gender1}"  />
+                <DataGridTextColumn Header="Email" Binding="{Binding Email1}"  />
+                <DataGridTextColumn Header="Based Location" Binding="{Binding BasedLocation1}"  />
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid x:Name="PasswordInput" Height="142" Width="300" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2" Visibility="Collapsed">
+            <Grid Opacity="0"/>
+            <Border
+                MinWidth="250"
+                Background="#E8E8E8" 
+                BorderBrush="LightBlue" 
+                BorderThickness="1" 
+                CornerRadius="20,20,20,20"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Height="142" Width="307">
+                <StackPanel>
+
+                    <TextBlock Height="35" Margin="5" Text="Enter Teacher Password:" FontWeight="Bold" FontSize="16" />
+                    <PasswordBox Height="30" HorizontalAlignment="Center"  Name="Passwordbox1"  Grid.Row="3" Grid.Column="2" VerticalAlignment="Top" Width="247" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="EnterDeleteButton" Height="35" MinWidth="100" Margin="5" Content="Enter"  Click="EnterDeleteButton_Click"/>
+                        <Button x:Name="Cancel" Height="35" Margin="5" MinWidth="100" Content="Cancel"  Click="Cancel_Click" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+    </Grid>
+</Page>

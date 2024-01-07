@@ -1,0 +1,65 @@
+﻿<Page x:Class="TafeSystemUI.View.SemesterViewFol.AddSemester"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TafeSystemUI.View.SemesterViewFol"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="AddSemester">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="Foreground" Value="#12232E"/>
+        </Style>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="AliceBlue"/>
+        </Style>
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="AliceBlue"/>
+        </Style>
+        <Style TargetType="Page">
+            <Setter Property="Background" Value="AliceBlue"/>
+        </Style>
+        <Style TargetType="DataGridCellsPanel">
+            <Setter Property="Background" Value="AliceBlue"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="AliceBlue"/>
+        </Style>
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background" Value="AliceBlue"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Button x:Name="BackBtn" Grid.Row="1" Grid.Column="1" Content="Back"   Click="BackBtn_Click"/>
+        <Button x:Name="AddSemesterBtn" Grid.Row="3" Grid.Column="1" Content="Add"   Click="AddSemesterBtn_Click"/>
+        <DatePicker HorizontalAlignment="Center" Name="startDate" Grid.Column="3" 
+   VerticalAlignment="Top" Grid.Row="1" 
+   SelectedDateChanged="startDate_SelectedDateChanged"/>
+        <DatePicker HorizontalAlignment="Center" Name="endDate" Grid.Column="5" 
+   VerticalAlignment="Top" Grid.Row="1" 
+   SelectedDateChanged="endDate_SelectedDateChanged"/>
+        <Label Height="30" Content="Start date:" Grid.Row="1" Grid.Column="2" />
+        <Label Height="30" Content="End date:" Grid.Row="1" Grid.Column="4" />
+    </Grid>
+</Page>
